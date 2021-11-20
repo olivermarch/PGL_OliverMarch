@@ -30,7 +30,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button17"
+            android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -42,7 +42,7 @@
             tools:ignore="TextContrastCheck" />
 
         <Button
-            android:id="@+id/button19"
+            android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -53,7 +53,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button20"
+            android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -64,7 +64,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button18"
+            android:id="@+id/btnBorrado"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -81,7 +81,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button21"
+            android:id="@+id/btn4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -94,7 +94,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button23"
+            android:id="@+id/btn5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -106,7 +106,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button24"
+            android:id="@+id/btn6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -117,7 +117,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button22"
+            android:id="@+id/btnMultiplicacion"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -135,7 +135,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button30"
+            android:id="@+id/btn7"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -146,7 +146,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button32"
+            android:id="@+id/btn8"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -157,7 +157,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button31"
+            android:id="@+id/btn9"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -168,7 +168,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button29"
+            android:id="@+id/btnDivision"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -186,7 +186,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button25"
+            android:id="@+id/btn0"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -197,7 +197,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button28"
+            android:id="@+id/btnSuma"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -208,7 +208,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button27"
+            android:id="@+id/btnResta"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
@@ -219,7 +219,7 @@
             app:cornerRadius="20px" />
 
         <Button
-            android:id="@+id/button26"
+            android:id="@+id/btnIgual"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5px"
