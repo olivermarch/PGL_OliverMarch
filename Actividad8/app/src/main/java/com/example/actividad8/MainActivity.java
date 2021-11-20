@@ -24,11 +24,24 @@ public class MainActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.editTextNumber);
         buttonXML = findViewById(R.id.btnXML);
+
+        //método Listener
+        buttonListener = findViewById(R.id.btnListener);
+        buttonListener.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calcularTablaDeMultiplicar();
+            } });
+
         tvResultado = findViewById(R.id.textViewResultado);
 
     }
-
+    //método onClick
     public void multiplicar(View view) {
+        calcularTablaDeMultiplicar();
+    }
+
+    public void calcularTablaDeMultiplicar (){
 
         String resultado = "";
         int factorA = Integer.parseInt(editText.getText().toString());
@@ -39,5 +52,9 @@ public class MainActivity extends AppCompatActivity {
             resultado += factorA + " x " + i + " = " + producto + "\n";
         }
         tvResultado.setText(resultado);
+
     }
+
+
+
 }
