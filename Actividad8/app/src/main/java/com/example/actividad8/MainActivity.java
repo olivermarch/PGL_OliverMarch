@@ -2,13 +2,15 @@ package com.example.actividad8;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
+import android.view.View.OnClickListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
 
     Button buttonXML;
     Button buttonListener;
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                 calcularTablaDeMultiplicar();
             } });
 
+        buttonInterface = (Button) findViewById(R.id.btnInterfaz);
+        buttonInterface.setOnClickListener(this);
+
         tvResultado = findViewById(R.id.textViewResultado);
 
     }
@@ -41,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
         calcularTablaDeMultiplicar();
     }
 
+    // Método implementando la interfaz a la clase de la Activity, en nuestro caso la MainActivity
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch(id) {
+            case R.id.btnInterfaz:
+                calcularTablaDeMultiplicar();
+
+    }
+    }
+    //Método que realiza el calculo de las tablas de multiplicar
     public void calcularTablaDeMultiplicar (){
 
         String resultado = "";
@@ -52,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             resultado += factorA + " x " + i + " = " + producto + "\n";
         }
         tvResultado.setText(resultado);
-
     }
 
 
