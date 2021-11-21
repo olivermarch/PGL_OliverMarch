@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class IMC_Activity extends AppCompatActivity {
 
@@ -16,16 +19,25 @@ public class IMC_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imc);
 
-        pulsarBoton();
-    }
+        datos = getIntent().getExtras();
+        Double datoAltura = datos.getDouble("altura");
+        Integer datoEdad = datos.getInt("edad");
+        Double datoPeso = datos.getDouble("peso");
 
-    public void pulsarBoton(){
+        Double imc = datoPeso / (Math.pow(datoAltura,2));
+
+        TextView tv = (TextView) findViewById(R.id.txtIMC);
+        tv.setText("Edad: " + datoEdad +" "+ "Altura: " + datoAltura+" metros\n"
+                    + "Peso: " + datoPeso+" kilos  IMC: "+ String.format("%.2f", imc));
 
         findViewById(R.id.btnRegresar).setOnClickListener(v ->{
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+            finish();
+
         });
+
+
     }
+
 
     }
 

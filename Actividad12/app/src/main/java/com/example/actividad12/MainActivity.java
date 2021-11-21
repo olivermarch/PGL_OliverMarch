@@ -17,10 +17,9 @@ public class MainActivity extends AppCompatActivity {
     RadioButton rbsex;
 
     Double altura;
-    Double edad;
+    Integer edad;
     Double peso;
-    Double imc;
-    String sexo = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         etAltura = findViewById(R.id.txtAltura);
         etEdad = findViewById(R.id.txtEdad);
         etPeso = findViewById(R.id.txtPeso);
-        rbSexo = findViewById(R.id.rbSexoTotal);
-        rbsex =findViewById(R.id.rbHombre);
+
 
         pulsarBoton();
 
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("altura", altura);
             intent.putExtra("edad", edad);
             intent.putExtra("peso", peso);
-            intent.putExtra("sexo", sexo);
+            //intent.putExtra("sexo", sexo);
             startActivity(intent);
         });
 
@@ -54,11 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     public  void obtenerDatos () {
         altura = Double.parseDouble(etAltura.getText().toString());
-        edad = Double.parseDouble(etEdad.getText().toString());
+        edad = Integer.parseInt(etEdad.getText().toString());
         peso = Double.parseDouble(etPeso.getText().toString());
-        sexo = rbsex.getText().toString();
-        imc = peso / Math.pow(2, altura);
-
-
     }
 }
