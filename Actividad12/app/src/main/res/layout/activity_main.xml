@@ -50,7 +50,7 @@
             android:inputType="number" />
 
         <TextView
-            android:id="@+id/txtPeso"
+            android:id="@+id/textView344"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,7 +59,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editTextNumber3"
+            android:id="@+id/txtPeso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -85,6 +85,7 @@
             android:textSize="16sp" />
 
         <RadioGroup
+            android:id="@+id/rbSexoTotal"
             android:layout_width="168dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
