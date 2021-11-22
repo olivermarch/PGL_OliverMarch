@@ -8,50 +8,47 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
             android:ems="10"
             android:hint="Nombre"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="62dp" />
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/txtApellido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Apellido"
-            tools:layout_editor_absoluteX="100dp"
-            tools:layout_editor_absoluteY="137dp" />
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/txtEdad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|center_horizontal"
             android:ems="10"
             android:hint="Edad"
-            android:inputType="number"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="203dp" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="279dp" />
+            android:layout_gravity="center|center_horizontal"
+            android:text="Lanzar a la Web" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,6 +57,7 @@
         android:orientation="vertical">
 
         <WebView
+            android:id="@+id/webV"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
