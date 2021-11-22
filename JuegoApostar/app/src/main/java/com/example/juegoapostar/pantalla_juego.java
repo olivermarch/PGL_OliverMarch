@@ -25,7 +25,7 @@ public class pantalla_juego extends AppCompatActivity {
 
     private  Button [] boton = new Button[idBotones.length];
     int apuesta;
-
+    int aleatorio = NumeroAleatorio.generaAleatorio();
     String nombreJugador;
 
 
@@ -37,11 +37,15 @@ public class pantalla_juego extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_juego);
 
+
+        System.out.println(aleatorio);
+
         datos = getIntent().getExtras();
         nombreJugador = datos.getString("nombre");
 
         WebView webView = (WebView) findViewById(R.id.webView);
         webView.loadDataWithBaseURL(null,agregarHtml(""),"text/html", "utf-8", null);
+
         setAllButtons();
 
     }
