@@ -8,26 +8,26 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class PruebaCanvas extends View {
-    float posCocheX = -1;
-    float posCocheY = -1;
+    float posxInicio = -1;
+    float posyInicio = -1;
+    float posxFinal;
+    float posyFinal;
+
     Paint pincelAzul;
     Paint pincelVerde;
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int ancho = canvas.getWidth();
-        int largo = canvas.getHeight();
-        canvas.drawRect(0,0, ancho,largo,pincelAzul);
-        if(posCocheX != -1 || posCocheY != -1){
-            canvas.drawCircle( posCocheX, posCocheY, 20,pincelVerde);
-        }
+
+        canvas.drawLine(posxInicio, posyInicio, posxFinal, posyFinal, pincelVerde);
+        i
+
     }
     public PruebaCanvas(Context context) {
         super(context);
         init(); }
-    public PruebaCanvas(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public PruebaCanvas(Context context, AttributeSet attrs) { super(context, attrs);
         init();
     }
     public PruebaCanvas(Context context,AttributeSet attrs, int defStyleAttr) {
