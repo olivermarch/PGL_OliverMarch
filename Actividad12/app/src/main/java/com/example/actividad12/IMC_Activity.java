@@ -2,7 +2,9 @@ package com.example.actividad12;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -17,6 +19,15 @@ public class IMC_Activity extends AppCompatActivity {
 
 
     Bundle datos;
+    // Para SQLite
+    BaseDatos baseDatos;
+    String nombre;
+    Double datoAltura;
+    Integer datoEdad;
+    Double datoPeso;
+    String datoIMC;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +35,10 @@ public class IMC_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_imc);
 
         datos = getIntent().getExtras();
-        Double datoAltura = datos.getDouble("altura");
-        Integer datoEdad = datos.getInt("edad");
-        Double datoPeso = datos.getDouble("peso");
+        datoAltura = datos.getDouble("altura");
+        datoEdad = datos.getInt("edad");
+        datoPeso = datos.getDouble("peso");
 
-        String nombreYApellido;
         EditText etNombre;
         EditText etApellido;
 
@@ -40,19 +50,25 @@ public class IMC_Activity extends AppCompatActivity {
          etApellido = (EditText) findViewById(R.id.txtApellido);
 
 
+         baseDatos = new BaseDatos(this);
 
+
+         datoIMC = String.format("%.2f", imc);
 
         String datosPersona = ("Edad: " + datoEdad +" "+ "Altura: " + datoAltura+" metros\n"
-                + "Peso: " + datoPeso+" kilos  IMC: "+ String.format("%.2f", imc));
+                + "Peso: " + datoPeso+" kilos  IMC: "+ datoIMC);
 
         tv.setText(datosPersona);
 
         findViewById(R.id.btnGrabarDatos).setOnClickListener(v -> {
 
+            nombre = etNombre.getText().toString() + " " + etApellido.getText().toString();
+
             String datosGrabar = etNombre.getText().toString() + " " + etApellido.getText().toString() + "\n"
                                 + datosPersona;
-
-            grabar(datosGrabar);});
+            grabar(datosGrabar);
+            insertarDatos();
+        });
         findViewById(R.id.btnRegresar).setOnClickListener(v ->{
             finish();
         });
@@ -72,14 +88,18 @@ public class IMC_Activity extends AppCompatActivity {
         }
         Toast t = Toast.makeText(getApplicationContext(), "Los datos fueron grabados",Toast.LENGTH_SHORT);
         t.show();
+    }
 
-
-
-//
-
+    private void insertarDatos(){
+        SQLiteDatabase db = baseDatos.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PersonaContract.PersonaEntry.COLUMN_IMC_NOMBRE, nombre);
+        values.put(PersonaContract.PersonaEntry.COLUMN_IMC_ALTURA, datoAltura);
+        values.put(PersonaContract.PersonaEntry.COLUMN_IMC_PESO, datoPeso);
+        values.put(PersonaContract.PersonaEntry.COLUMN_IMC_IMC, datoIMC);
+        db.insert(PersonaContract.PersonaEntry.TABLE_NAME, null, values);
 
 
     }
-
 }
 
