@@ -29,6 +29,22 @@
         android:layout_weight="0.3"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/txtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Nombre" />
+
+        <EditText
+            android:id="@+id/txtApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Apellidos" />
+
         <Button
             android:id="@+id/btnGrabarDatos"
             android:layout_width="match_parent"

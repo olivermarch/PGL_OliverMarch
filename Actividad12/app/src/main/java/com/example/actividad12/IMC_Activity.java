@@ -28,16 +28,31 @@ public class IMC_Activity extends AppCompatActivity {
         Integer datoEdad = datos.getInt("edad");
         Double datoPeso = datos.getDouble("peso");
 
+        String nombreYApellido;
+        EditText etNombre;
+        EditText etApellido;
+
         Double imc = datoPeso / (Math.pow(datoAltura,2));
 
         TextView tv = (TextView) findViewById(R.id.txtIMC);
+
+         etNombre = (EditText) findViewById(R.id.txtNombre);
+         etApellido = (EditText) findViewById(R.id.txtApellido);
+
+
+
 
         String datosPersona = ("Edad: " + datoEdad +" "+ "Altura: " + datoAltura+" metros\n"
                 + "Peso: " + datoPeso+" kilos  IMC: "+ String.format("%.2f", imc));
 
         tv.setText(datosPersona);
 
-        findViewById(R.id.btnGrabarDatos).setOnClickListener(v -> {grabar(datosPersona);});
+        findViewById(R.id.btnGrabarDatos).setOnClickListener(v -> {
+
+            String datosGrabar = etNombre.getText().toString() + " " + etApellido.getText().toString() + "\n"
+                                + datosPersona;
+
+            grabar(datosGrabar);});
         findViewById(R.id.btnRegresar).setOnClickListener(v ->{
             finish();
         });
@@ -57,7 +72,7 @@ public class IMC_Activity extends AppCompatActivity {
         }
         Toast t = Toast.makeText(getApplicationContext(), "Los datos fueron grabados",Toast.LENGTH_SHORT);
         t.show();
-        finish();
+
 
 
 //
