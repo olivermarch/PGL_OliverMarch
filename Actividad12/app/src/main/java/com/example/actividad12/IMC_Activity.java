@@ -37,11 +37,9 @@ public class IMC_Activity extends AppCompatActivity {
 
         tv.setText(datosPersona);
 
-        grabar(datosPersona);
-
+        findViewById(R.id.btnGrabarDatos).setOnClickListener(v -> {grabar(datosPersona);});
         findViewById(R.id.btnRegresar).setOnClickListener(v ->{
             finish();
-
         });
 
 
