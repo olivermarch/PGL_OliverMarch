@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Actividad12">
         <activity
-            android:name=".IMC_Activity"
+            android:name=".Resultados"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IMC_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Inicio"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
