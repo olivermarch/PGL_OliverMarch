@@ -14,6 +14,7 @@ public class PersonaContract {
         public final static String _ID = BaseColumns._ID;
 
         public final static String COLUMN_IMC_NOMBRE = "nombre";
+        public final static String COLUMN_IMC_EDAD = "edad";
         public final static String COLUMN_IMC_ALTURA = "altura";
         public final static String COLUMN_IMC_PESO = "peso";
         public final static String COLUMN_IMC_IMC = "imc";

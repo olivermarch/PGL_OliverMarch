@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,9 +23,10 @@ public class IMC_Activity extends AppCompatActivity {
     Bundle datos;
     // Para SQLite
     BaseDatos baseDatos;
+
     String nombre;
-    Double datoAltura;
     Integer datoEdad;
+    Double datoAltura;
     Double datoPeso;
     String datoIMC;
 
@@ -49,8 +52,6 @@ public class IMC_Activity extends AppCompatActivity {
          etNombre = (EditText) findViewById(R.id.txtNombre);
          etApellido = (EditText) findViewById(R.id.txtApellido);
 
-
-         baseDatos = new BaseDatos(this);
 
 
          datoIMC = String.format("%.2f", imc);
@@ -91,15 +92,19 @@ public class IMC_Activity extends AppCompatActivity {
     }
 
     private void insertarDatos(){
-        SQLiteDatabase db = baseDatos.getWritableDatabase();
+        BaseDatos admin = new BaseDatos(this, BaseDatos.DATABASE_NAME, null, BaseDatos.DATABASE_VERSION);
+        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(PersonaContract.PersonaEntry.COLUMN_IMC_NOMBRE, nombre);
+        values.put(PersonaContract.PersonaEntry.COLUMN_IMC_EDAD, datoEdad);
         values.put(PersonaContract.PersonaEntry.COLUMN_IMC_ALTURA, datoAltura);
         values.put(PersonaContract.PersonaEntry.COLUMN_IMC_PESO, datoPeso);
         values.put(PersonaContract.PersonaEntry.COLUMN_IMC_IMC, datoIMC);
-        db.insert(PersonaContract.PersonaEntry.TABLE_NAME, null, values);
-
+        BaseDeDatos.insert(PersonaContract.PersonaEntry.TABLE_NAME, null, values);
+        BaseDeDatos.close();
 
     }
+
+
 }
 
