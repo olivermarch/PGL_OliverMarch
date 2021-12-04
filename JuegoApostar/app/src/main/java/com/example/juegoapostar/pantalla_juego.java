@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.juegoapostar.helper.JugadorDBHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class pantalla_juego extends AppCompatActivity {
     Bundle datos;
+    Jugador jugador;
+    JugadorDBHelper jugadorDBHelper;
 
     private static final int[]  idBotones = {
             R.id.btn0,
@@ -34,12 +40,15 @@ public class pantalla_juego extends AppCompatActivity {
     ArrayList<String> resultados = new ArrayList<>();
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_juego);
+
+        if( jugadorDBHelper == null){
+            jugadorDBHelper = JugadorDBHelper.getJugadorDBHelper(getApplicationContext());
+        }
+
 
         datos = getIntent().getExtras();
         nombreJugador = datos.getString("nombre");
@@ -65,8 +74,16 @@ public class pantalla_juego extends AppCompatActivity {
                     WebView webView = (WebView) findViewById(R.id.webView);
                     intentos++;
 
+
                     if(apuesta == aleatorio){
                         apuestaDato = "Ganaste, el número aleatorio es: " + aleatorio;
+                        guardarDB();
+
+                        Toast t = Toast.makeText(getApplicationContext(), "Ganaste con el " + apuesta
+                                + " y con un total de " + intentos + " intentos.",Toast.LENGTH_LONG);
+                        t.show();
+                        finish();
+
                     }if(apuesta > aleatorio){
                         apuestaDato = apuesta + " >  Aleatorio";
                     }if(apuesta < aleatorio) {
@@ -95,8 +112,16 @@ public class pantalla_juego extends AppCompatActivity {
                     WebView webView = (WebView) findViewById(R.id.webView);
                     intentos++;
 
+
                     if(apuesta == aleatorio){
                         apuestaDato = "Ganaste, el número aleatorio es: " + aleatorio;
+                        guardarDB();
+
+                        Toast t = Toast.makeText(getApplicationContext(), "Ganaste con el " + apuesta
+                                + " y con un total de " + intentos + " intentos.",Toast.LENGTH_LONG);
+                        t.show();
+                        finish();
+
                     }if(apuesta > aleatorio){
                         apuestaDato = apuesta + " >  Aleatorio";
                     }if(apuesta < aleatorio) {
@@ -156,7 +181,25 @@ public class pantalla_juego extends AppCompatActivity {
                         "h1 {color: #DEDCDC; font-style: italic }"+
                         "p {color: white;}"+
                         "h2 {color: white; font-size: 15px; font-weight: bold;} " +
-                        "table {background: #6200ee; color: white; margin: 3px; border-radius: 10px}" +
+                        ".intentos { color: red; font-size: 25px; font-weight: bold;}" +
+                        ".column {\n" +
+                        "  float: left;\n" +
+                        "  width: 50%;\n" +
+                        "  text-align: right !important;" +
+                        "  background: green;" +
+                        "}\n" +
+                        ".column1 {\n" +
+                        "  float: left;\n" +
+                        "  width: 50%;\n" +
+                        "  text-align: left !important;" +
+                        "}\n" +
+                        "\n" +
+                        ".row:after {\n" +
+                        "  content: \"\";\n" +
+                        "  display: table;\n" +
+                        "  clear: both;\n" +
+                        "}" +
+                        "table {background: #6200ee; color: white; margin: 3px; border-radius: 6px}" +
                         "</style>"+
 
                         "</head>"+
@@ -164,7 +207,10 @@ public class pantalla_juego extends AppCompatActivity {
                         "<h1>"+ "Nombre: " +
                         nombreJugador +
                         "</h1>"+
-                        "<div> <p>Intentos: </p><h2>" +intentos+ "</h2></div>" +
+                        "<div class='row'>" +
+                            "<div class='column'><p>Intentos: </p></div>" +
+                            "<div class='column1'><h2 class='intentos'>" +intentos+ "</h2></div>" +
+                        "</div>" +
                         "<p>" +
                         "<table>"+
                         resultadosHtml +
@@ -177,5 +223,15 @@ public class pantalla_juego extends AppCompatActivity {
         return resultado;
 
 
+    }
+
+    public void guardarDB(){
+        Jugador jugador = new Jugador();
+        jugador.setNombre(nombreJugador);
+        try{
+            jugador.setIntentos(intentos);
+            jugadorDBHelper.save(jugador);
+
+        }catch(Exception ex){}
     }
 }

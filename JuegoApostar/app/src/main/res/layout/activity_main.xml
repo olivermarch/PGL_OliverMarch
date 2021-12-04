@@ -32,6 +32,8 @@
     <TextView
         android:id="@+id/txtResultados"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|top"
+        android:textSize="16sp" />
 
 </LinearLayout>
