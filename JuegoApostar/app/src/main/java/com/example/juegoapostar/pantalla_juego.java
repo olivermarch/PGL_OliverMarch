@@ -23,22 +23,23 @@ public class pantalla_juego extends AppCompatActivity {
             R.id.btn8,
             R.id.btn9,};
 
+    final String[] valoresBotones = {"0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"};
+
     private  Button [] boton = new Button[idBotones.length];
     int apuesta;
     int aleatorio = NumeroAleatorio.generaAleatorio();
     String nombreJugador;
+    int intentos = 0;
+
+    ArrayList<String> resultados = new ArrayList<>();
 
 
-   final String[] valoresBotones = {"0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_juego);
-
-
-        System.out.println(aleatorio);
 
         datos = getIntent().getExtras();
         nombreJugador = datos.getString("nombre");
@@ -62,6 +63,16 @@ public class pantalla_juego extends AppCompatActivity {
                     apuesta = Integer.parseInt(boton[j].getText().toString());
                     String apuestaDato = boton[j].getText().toString();
                     WebView webView = (WebView) findViewById(R.id.webView);
+                    intentos++;
+
+                    if(apuesta == aleatorio){
+                        apuestaDato = "Ganaste, el número aleatorio es: " + aleatorio;
+                    }if(apuesta > aleatorio){
+                        apuestaDato = apuesta + " >  Aleatorio";
+                    }if(apuesta < aleatorio) {
+                        apuestaDato = apuesta + " <  Aleatorio";
+                    }
+
                     webView.loadDataWithBaseURL(null,agregarHtml(apuestaDato),"text/html", "utf-8", null);
 
                     for (int k = 0; k < 10; k++) {
@@ -82,6 +93,15 @@ public class pantalla_juego extends AppCompatActivity {
                     apuesta = Integer.parseInt(boton[j].getText().toString());
                     String apuestaDato = boton[j].getText().toString();
                     WebView webView = (WebView) findViewById(R.id.webView);
+                    intentos++;
+
+                    if(apuesta == aleatorio){
+                        apuestaDato = "Ganaste, el número aleatorio es: " + aleatorio;
+                    }if(apuesta > aleatorio){
+                        apuestaDato = apuesta + " >  Aleatorio";
+                    }if(apuesta < aleatorio) {
+                        apuestaDato = apuesta + " <  Aleatorio";
+                    }
                     webView.loadDataWithBaseURL(null,agregarHtml(apuestaDato),"text/html", "utf-8", null);
 
                     for (int k = 0; k < 10; k++) {
@@ -110,6 +130,15 @@ public class pantalla_juego extends AppCompatActivity {
     }
 
     String agregarHtml(String texto){
+        resultados.add(texto);
+
+        String resultadosHtml ="";
+        if(resultados != null){
+            for (String str: resultados) {
+                resultadosHtml += "<tr> <td>" + str + "</td></tr>";
+            }
+        }
+
 
         String resultado =
                 "<!DOCTYPE html >"+
@@ -126,15 +155,20 @@ public class pantalla_juego extends AppCompatActivity {
                         "body{background: black;}"+
                         "h1 {color: #DEDCDC; font-style: italic }"+
                         "p {color: white;}"+
+                        "h2 {color: white; font-size: 15px; font-weight: bold;} " +
+                        "table {background: #6200ee; color: white; margin: 3px; border-radius: 10px}" +
                         "</style>"+
 
                         "</head>"+
                         "<body>"+
-                        "<h1>"+
+                        "<h1>"+ "Nombre: " +
                         nombreJugador +
                         "</h1>"+
-                        "<p>+" +
-                        texto +
+                        "<div> <p>Intentos: </p><h2>" +intentos+ "</h2></div>" +
+                        "<p>" +
+                        "<table>"+
+                        resultadosHtml +
+                        "</table>"+
                         "</p>"+
                         "</body>"+
                         "</html>";

@@ -1,12 +1,12 @@
-package com.example.actividad12;
+package com.example.actividad12.helper;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.actividad12.contract.PersonaContract;
 
 
 public class BaseDatos extends SQLiteOpenHelper {
